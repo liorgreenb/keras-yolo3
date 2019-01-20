@@ -120,6 +120,7 @@ def _main_(args):
 
             # draw bounding boxes on the image using labels
             draw_boxes(image, boxes, config['model']['labels'], obj_thresh) 
+            save_boxes(image, boxes, config['model']['labels'], obj_thresh, output_path + image_path.split('/')[-1].replace('png', 'txt'))
      
             # write the image with bounding boxes to file
             cv2.imwrite(output_path + image_path.split('/')[-1], np.uint8(image))         

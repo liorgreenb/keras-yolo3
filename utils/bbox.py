@@ -89,4 +89,22 @@ def draw_boxes(image, boxes, labels, obj_thresh, quiet=True):
                         fontScale=1e-3 * image.shape[0], 
                         color=(0,0,0), 
                         thickness=2)
-    return image          
+    return image       
+
+def save_boxes(image, boxes, labels, obj_thresh, output, quiet=True):
+    with open(output, 'w+') as file:
+        for box in boxes:
+            label_str = ''
+            label = -1
+            
+            for i in range(len(labels)):
+                if box.classes[i] > obj_thresh:
+                    if label_str != '': label_str += ', '
+                    label_str += (labels[i] + ' ' + str(round(box.get_score()*100, 2)) + '%')
+                    label = i
+                if not quiet: print(label_str)
+                    
+            if label >= 0:
+                with open(output, 'w+') as file:
+                    file.write(f"{repr(box)} {label_str}")
+    file.close()
