@@ -5,7 +5,7 @@ import argparse
 import json
 import cv2
 from utils.utils import get_yolo_boxes, makedirs
-from utils.bbox import draw_boxes
+from utils.bbox import draw_boxes, save_boxes
 from keras.models import load_model
 from tqdm import tqdm
 import numpy as np
