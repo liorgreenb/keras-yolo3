@@ -85,5 +85,8 @@ def draw_boxes(image, boxes, labels, obj_thresh, quiet=True):
                         fontScale=1e-3 * image.shape[0], 
                         color=(0,0,0), 
                         thickness=2)
+
+    def __str__(self):
+        return f"{self.xmin} {self.ymin} {self.xmax} {self.ymax}"
         
     return image          
