@@ -106,5 +106,5 @@ def save_boxes(image, boxes, labels, obj_thresh, output, quiet=True):
                     
             if label >= 0:
                 with open(output, 'w+') as file:
-                    file.write(f"{repr(box)} {label_str}")
+                    file.write(f"{str(box)} {label_str}")
     file.close()
