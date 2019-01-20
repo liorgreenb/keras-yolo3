@@ -105,5 +105,5 @@ def save_boxes(image, boxes, labels, obj_thresh, output, quiet=True):
                 if not quiet: print(label_str)
                     
             if label >= 0:
-                file.write(f"{str(box)} {label_str}")
+                file.write(f"{str(box)} {label_str}\n")
     file.close()
