@@ -26,7 +26,11 @@ class BoundBox:
         if self.score == -1:
             self.score = self.classes[self.get_label()]
             
-        return self.score      
+        return self.score
+    def __str__(self):
+        return f"{self.xmin} {self.ymin} {self.xmax} {self.ymax}"
+
+
 
 def _interval_overlap(interval_a, interval_b):
     x1, x2 = interval_a
@@ -85,8 +89,4 @@ def draw_boxes(image, boxes, labels, obj_thresh, quiet=True):
                         fontScale=1e-3 * image.shape[0], 
                         color=(0,0,0), 
                         thickness=2)
-
-    def __str__(self):
-        return f"{self.xmin} {self.ymin} {self.xmax} {self.ymax}"
-        
     return image          
