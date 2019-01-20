@@ -210,7 +210,7 @@ def _conv_block(inp, convs, do_skip=True):
                    padding='valid' if conv['stride'] > 1 else 'same', # unlike tensorflow darknet prefer left and top paddings
                    name='conv_' + str(conv['layer_idx']), 
                    use_bias=False if conv['bnorm'] else True)(x)
-        if conv in 'freeze': x.trainable = !conv['freeze'] 
+        if conv in 'freeze': x.trainable = not conv['freeze'] 
         if conv['bnorm']: x = BatchNormalization(epsilon=0.001, name='bnorm_' + str(conv['layer_idx']))(x)
         if conv['leaky']: x = LeakyReLU(alpha=0.1, name='leaky_' + str(conv['layer_idx']))(x)
             
