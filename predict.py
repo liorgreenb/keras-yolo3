@@ -118,7 +118,7 @@ def _main_(args):
 
             output_image_path = output_path + image_path.split('/')[-1]
             output_image_pathname = os.path.splitext(output_image_path)[0]
-            output_anotation_path = path + '.txt'
+            output_anotation_path = output_image_pathname + '.txt'
 
             # draw bounding boxes on the image using labels
             draw_boxes(image, boxes, config['model']['labels'], obj_thresh) 
