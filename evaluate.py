@@ -12,6 +12,8 @@ from keras.callbacks import EarlyStopping, ModelCheckpoint
 from keras.optimizers import Adam
 from keras.models import load_model
 
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+
 def _main_(args):
     config_path = args.conf
 
