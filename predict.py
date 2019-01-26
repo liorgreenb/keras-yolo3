@@ -116,16 +116,18 @@ def _main_(args):
             # predict the bounding boxes
             boxes = get_yolo_boxes(infer_model, [image], net_h, net_w, config['model']['anchors'], obj_thresh, nms_thresh)[0]
 
-            annotation_output =  output_path + image_path.split('/')[-1].replace('png', 'txt')
+            output_image_path = output_path + image_path.split('/')[-1]
+            (path,) = os.path.splitext(output_image_path)
+            output_anotation_path = path + '.txt'
 
             # draw bounding boxes on the image using labels
             draw_boxes(image, boxes, config['model']['labels'], obj_thresh) 
-            save_boxes(image, boxes, config['model']['labels'], obj_thresh, annotation_output)
+            save_boxes(image, boxes, config['model']['labels'], obj_thresh, output_image_path)
 
-            print(f"Saving annotations to {annotation_output}")
+            print(f"Saving annotations to {output_anotation_path}")
      
             # write the image with bounding boxes to file
-            cv2.imwrite(output_path + image_path.split('/')[-1], np.uint8(image))         
+            cv2.imwrite(output_image_path, np.uint8(image))         
 
 if __name__ == '__main__':
     argparser = argparse.ArgumentParser(description='Predict with a trained yolo model')
