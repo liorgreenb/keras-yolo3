@@ -113,7 +113,6 @@ def _main_(args):
         # the main loop
         for image_path in image_paths:
             image = cv2.imread(image_path)
-            print(image_path)
 
             # predict the bounding boxes
             boxes = get_yolo_boxes(infer_model, [image], net_h, net_w, config['model']['anchors'], obj_thresh, nms_thresh)[0]
@@ -125,8 +124,6 @@ def _main_(args):
             # draw bounding boxes on the image using labels
             draw_boxes(image, boxes, config['model']['labels'], obj_thresh) 
             save_boxes(image, boxes, config['model']['labels'], obj_thresh, output_anotation_path)
-
-            print(f"Saving annotations to {output_anotation_path}")
      
             # write the image with bounding boxes to file
             cv2.imwrite(output_image_path, np.uint8(image))         
