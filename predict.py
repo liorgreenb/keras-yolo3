@@ -10,6 +10,8 @@ from keras.models import load_model
 from tqdm import tqdm
 import numpy as np
 
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+
 def _main_(args):
     config_path  = args.conf
     input_path   = args.input

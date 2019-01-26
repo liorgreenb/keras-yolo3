@@ -20,6 +20,8 @@ import tensorflow as tf
 import keras
 from keras.models import load_model
 
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+
 def create_training_instances(
     train_annot_folder,
     train_image_folder,
