@@ -122,7 +122,7 @@ def _main_(args):
 
             # draw bounding boxes on the image using labels
             draw_boxes(image, boxes, config['model']['labels'], obj_thresh) 
-            save_boxes(image, boxes, config['model']['labels'], obj_thresh, output_image_path)
+            save_boxes(image, boxes, config['model']['labels'], obj_thresh, output_anotation_path)
 
             print(f"Saving annotations to {output_anotation_path}")
      
