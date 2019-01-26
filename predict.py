@@ -116,11 +116,13 @@ def _main_(args):
             # predict the bounding boxes
             boxes = get_yolo_boxes(infer_model, [image], net_h, net_w, config['model']['anchors'], obj_thresh, nms_thresh)[0]
 
-            print(boxes)
+            annotation_output =  output_path + image_path.split('/')[-1].replace('png', 'txt';
 
             # draw bounding boxes on the image using labels
             draw_boxes(image, boxes, config['model']['labels'], obj_thresh) 
-            save_boxes(image, boxes, config['model']['labels'], obj_thresh, output_path + image_path.split('/')[-1].replace('png', 'txt'))
+            save_boxes(image, boxes, config['model']['labels'], obj_thresh, annotation_output)
+
+            print(f"Saving annotations to {annotation_output}",)
      
             # write the image with bounding boxes to file
             cv2.imwrite(output_path + image_path.split('/')[-1], np.uint8(image))         
