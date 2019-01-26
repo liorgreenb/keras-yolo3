@@ -117,7 +117,7 @@ def _main_(args):
             boxes = get_yolo_boxes(infer_model, [image], net_h, net_w, config['model']['anchors'], obj_thresh, nms_thresh)[0]
 
             output_image_path = output_path + image_path.split('/')[-1]
-            (path,) = os.path.splitext(output_image_path)
+            output_image_pathname = os.path.splitext(output_image_path)[0]
             output_anotation_path = path + '.txt'
 
             # draw bounding boxes on the image using labels
