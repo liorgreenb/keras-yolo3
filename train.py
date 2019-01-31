@@ -263,7 +263,8 @@ def _main_(args):
         verbose          = 2,
         callbacks        = callbacks, 
         workers          = 4,
-        max_queue_size   = 8
+        max_queue_size   = 8,
+        verbose          = True,
     )
 
     # make a GPU version of infer_model for evaluation
