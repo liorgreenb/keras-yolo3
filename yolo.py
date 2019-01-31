@@ -359,6 +359,9 @@ def create_yolov3_model(
     train_model = Model([input_image, true_boxes, true_yolo_1, true_yolo_2, true_yolo_3], [loss_yolo_1, loss_yolo_2, loss_yolo_3])
     infer_model = Model(input_image, [pred_yolo_1, pred_yolo_2, pred_yolo_3])
 
+      for layer in currmodel.layers[:80]:
+        layer.trainable = False
+
     return [train_model, infer_model]
 
 def dummy_loss(y_true, y_pred):
