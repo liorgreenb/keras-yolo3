@@ -22,7 +22,7 @@ from keras.models import load_model
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
-from keras-gpu import set_gpu_session
+from gpu import set_gpu_session
 
 set_gpu_session()
 

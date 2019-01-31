@@ -1,7 +1,7 @@
 import tensorflow as tf
 from keras.backend.tensorflow_backend import set_session
 
-def set_gpu_session(self):
+def set_gpu_session():
     print('Setting gpu session')
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True  # dynamically grow the memory used on the GPU
