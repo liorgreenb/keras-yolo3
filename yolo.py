@@ -360,10 +360,10 @@ def create_yolov3_model(
     infer_model = Model(input_image, [pred_yolo_1, pred_yolo_2, pred_yolo_3])
 
     for layer in train_model.layers[:80]:
-    layer.trainable = False
+        layer.trainable = False
 
     for layer in infer_model.layers[:80]:
-    layer.trainable = False
+        layer.trainable = False
 
     return [train_model, infer_model]
 
