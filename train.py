@@ -160,8 +160,10 @@ def create_model(
         template_model.load_weights("backend.h5", by_name=True)       
 
     if multi_gpu > 1:
+        print('Running on gpu')
         train_model = multi_gpu_model(template_model, gpus=multi_gpu)
     else:
+        print('Running on non-gpu')
         train_model = template_model      
 
     optimizer = Adam(lr=lr, clipnorm=0.001)
