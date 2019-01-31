@@ -22,6 +22,10 @@ from keras.models import load_model
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
+from keras-gpu import set_gpu_session
+
+set_gpu_session()
+
 def create_training_instances(
     train_annot_folder,
     train_image_folder,
