@@ -41,7 +41,7 @@ def print_anchors(centroids):
     widths = anchors[:, 0]
     sorted_indices = np.argsort(widths)
 
-    r = "anchors: ["
+    r = "["
     for i in sorted_indices:
         out_string += str(int(anchors[i,0]*416)) + ',' + str(int(anchors[i,1]*416)) + ', '
             
@@ -66,7 +66,7 @@ def run_kmeans(ann_dims, anchor_num):
             distances.append(d)
         distances = np.array(distances) # distances.shape = (ann_num, anchor_num)
 
-        print("iteration {}: dists = {}".format(iteration, np.sum(np.abs(old_distances-distances))))
+        # print("iteration {}: dists = {}".format(iteration, np.sum(np.abs(old_distances-distances))))
 
         #assign samples to centroids
         assignments = np.argmin(distances,axis=1)
@@ -101,7 +101,7 @@ def _main_(argv):
     # run k_mean to find the anchors
     annotation_dims = []
     for image in train_imgs:
-        print(image['filename'])
+        # print(image['filename'])
         for obj in image['object']:
             relative_w = (float(obj['xmax']) - float(obj['xmin']))/image['width']
             relatice_h = (float(obj["ymax"]) - float(obj['ymin']))/image['height']
@@ -111,7 +111,7 @@ def _main_(argv):
     centroids = run_kmeans(annotation_dims, num_anchors)
 
     # write anchors to file
-    print('\naverage IOU for', num_anchors, 'anchors:', '%0.2f' % avg_IOU(annotation_dims, centroids))
+    # print('\naverage IOU for', num_anchors, 'anchors:', '%0.2f' % avg_IOU(annotation_dims, centroids))
     print_anchors(centroids)
 
 if __name__ == '__main__':
