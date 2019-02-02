@@ -260,7 +260,7 @@ def _main_(args):
     ###
     # Summarizing model
     ###
-    train_model.summary()
+    # train_model.summary()
 
     ###############################
     #   Kick off the training
