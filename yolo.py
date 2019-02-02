@@ -281,7 +281,7 @@ def create_yolov3_model(
                         {'filter': 1024, 'kernel': 3, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 64}])
 
 
-    x = Dropout(0.3)(x)
+    # x = Dropout(0.3)(x)
 
     # Layer 66 => 74
     for i in range(3):

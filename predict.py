@@ -11,10 +11,10 @@ from tqdm import tqdm
 import numpy as np
 from gpu import set_gpu_session
 
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+
 set_gpu_session()
 
-
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
 def _main_(args):
     config_path  = args.conf
