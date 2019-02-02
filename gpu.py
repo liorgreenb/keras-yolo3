@@ -9,3 +9,4 @@ def set_gpu_session():
     #                                     # (nothing gets printed in Jupyter, only if you run it standalone)
     # sess = tf.Session(config=config)
     # set_session(sess)  # set this TensorFlow session as the default session for Keras
+    print()
