@@ -89,7 +89,6 @@ class PlotLosses(Callback):
         self.val_losses.append(logs.get('val_loss'))
         self.i += 1
         
-        clear_output(wait=True)
         plt.plot(self.x, self.losses, label="loss")
         plt.plot(self.x, self.val_losses, label="val_loss")
         plt.legend()
