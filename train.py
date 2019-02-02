@@ -19,6 +19,9 @@ from utils.multi_gpu_model import multi_gpu_model
 import tensorflow as tf
 import keras
 from keras.models import load_model
+from gpu import set_gpu_session
+
+set_gpu_session()
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
