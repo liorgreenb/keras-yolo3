@@ -169,7 +169,8 @@ class BatchGenerator(Sequence):
         dh = self.jitter * image_h;
 
         new_ar = (image_w + np.random.uniform(-dw, dw)) / (image_h + np.random.uniform(-dh, dh));
-        scale = 2
+        scale = np.random.uniform(0.25, 1);
+
         if (new_ar < 1):
             new_h = int(scale * net_h);
             new_w = int(net_h * new_ar);
