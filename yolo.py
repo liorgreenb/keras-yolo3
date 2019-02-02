@@ -1,4 +1,4 @@
-from keras.layers import Conv2D, Input, BatchNormalization, LeakyReLU, ZeroPadding2D, UpSampling2D, Lambda
+from keras.layers import Conv2D, Input, BatchNormalization, LeakyReLU, ZeroPadding2D, UpSampling2D, Lambda, Dropout
 from keras.layers.merge import add, concatenate
 from keras.models import Model
 from keras.engine.topology import Layer
@@ -279,6 +279,9 @@ def create_yolov3_model(
     x = _conv_block(x, [{'filter': 1024, 'kernel': 3, 'stride': 2, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 62},
                         {'filter':  512, 'kernel': 1, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 63},
                         {'filter': 1024, 'kernel': 3, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 64}])
+
+
+    x = Dropout(0.3, noise_shape(batch_size, 1, labels))(x)
 
     # Layer 66 => 74
     for i in range(3):
