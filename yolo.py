@@ -268,10 +268,10 @@ def create_yolov3_model(
                         {'filter': 256, 'kernel': 1, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 38},
                         {'filter': 512, 'kernel': 3, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 39}])
 
-    # Layer 41 => 61
-    for i in range(7):
-        x = _conv_block(x, [{'filter': 256, 'kernel': 1, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 41+i*3},
-                            {'filter': 512, 'kernel': 3, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 42+i*3}])
+    # # Layer 41 => 61
+    # for i in range(7):
+    #     x = _conv_block(x, [{'filter': 256, 'kernel': 1, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 41+i*3},
+    #                         {'filter': 512, 'kernel': 3, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 42+i*3}])
         
     skip_61 = x
         
@@ -280,10 +280,10 @@ def create_yolov3_model(
                         {'filter':  512, 'kernel': 1, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 63},
                         {'filter': 1024, 'kernel': 3, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 64}])
 
-    # Layer 66 => 74
-    for i in range(3):
-        x = _conv_block(x, [{'filter':  512, 'kernel': 1, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 66+i*3},
-                            {'filter': 1024, 'kernel': 3, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 67+i*3}])
+    # # Layer 66 => 74
+    # for i in range(3):
+    #     x = _conv_block(x, [{'filter':  512, 'kernel': 1, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 66+i*3},
+    #                         {'filter': 1024, 'kernel': 3, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 67+i*3}])
         
     # Layer 75 => 79
     x = _conv_block(x, [{'filter':  512, 'kernel': 1, 'stride': 1, 'bnorm': True, 'leaky': True, 'freeze': True, 'layer_idx': 75},
