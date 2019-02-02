@@ -257,6 +257,11 @@ def _main_(args):
         class_scale         = config['train']['class_scale'],
     )
 
+    ###
+    # Summarizing model
+    ###
+    train_model.summary()
+
     ###############################
     #   Kick off the training
     ###############################
