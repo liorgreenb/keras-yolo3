@@ -20,7 +20,6 @@ import tensorflow as tf
 import keras
 from keras.models import load_model
 from gpu import set_gpu_session
-from livelossplot.keras import PlotLossesCallback
 
 set_gpu_session()
 
@@ -106,8 +105,7 @@ def create_callbacks(saved_weights_name, tensorboard_logs, model_to_save):
         write_graph            = True,
         write_images           = True,
     )
-    plot_losses = PlotLossesCallback()
-    return [early_stop, checkpoint, reduce_on_plateau, tensorboard, plot_losses]
+    return [early_stop, checkpoint, reduce_on_plateau, tensorboard]
 
 def create_model(
     nb_class, 
