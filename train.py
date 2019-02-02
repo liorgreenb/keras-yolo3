@@ -14,7 +14,7 @@ from generator import BatchGenerator
 from utils.utils import normalize, evaluate, makedirs
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from keras.optimizers import Adam
-from callbacks import CustomModelCheckpoint, CustomTensorBoard
+from callbacks import CustomModelCheckpoint, CustomTensorBoard,PlotLosses
 from utils.multi_gpu_model import multi_gpu_model
 import tensorflow as tf
 import keras
@@ -101,8 +101,9 @@ def create_callbacks(saved_weights_name, tensorboard_logs, model_to_save):
         log_dir                = tensorboard_logs,
         write_graph            = True,
         write_images           = True,
-    )    
-    return [early_stop, checkpoint, reduce_on_plateau, tensorboard]
+    )
+    plot_losses = PlotLosses()
+    return [early_stop, checkpoint, reduce_on_plateau, tensorboard, plot_losses]
 
 def create_model(
     nb_class, 
