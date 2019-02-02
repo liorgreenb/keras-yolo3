@@ -210,7 +210,7 @@ def _conv_block(inp, convs, do_skip=True):
                    padding='valid' if conv['stride'] > 1 else 'same', # unlike tensorflow darknet prefer left and top paddings
                    name='conv_' + str(conv['layer_idx']), 
                    use_bias=False if conv['bnorm'] else True)(x)
-        if 'freeze' in conv : x.trainable = not conv['freeze'] 
+        # if 'freeze' in conv : x.trainable = not conv['freeze'] 
         if conv['bnorm']: x = BatchNormalization(epsilon=0.001, name='bnorm_' + str(conv['layer_idx']))(x)
         if conv['leaky']: x = LeakyReLU(alpha=0.1, name='leaky_' + str(conv['layer_idx']))(x)
             
@@ -358,6 +358,10 @@ def create_yolov3_model(
 
     train_model = Model([input_image, true_boxes, true_yolo_1, true_yolo_2, true_yolo_3], [loss_yolo_1, loss_yolo_2, loss_yolo_3])
     infer_model = Model(input_image, [pred_yolo_1, pred_yolo_2, pred_yolo_3])
+
+
+    for layer in train_model.layers[:66]:
+        layer.trainable = False
 
     return [train_model, infer_model]
 
