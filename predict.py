@@ -13,9 +13,6 @@ from gpu import set_gpu_session
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
-set_gpu_session()
-
-
 def _main_(args):
     config_path  = args.conf
     input_path   = args.input
